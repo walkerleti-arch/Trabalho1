@@ -6,8 +6,11 @@
         <link rel="icon" href="img/Animation 1.png">
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
-    <body>
+        <body>
         <div class="header-wrapper" id="header-wrapper">
             <header class="header">
                 <div class="header-container">
@@ -29,16 +32,43 @@
             </header>
         </div>   
         <section class="hero-background">
-            <div class="hero-content">
-                <h1 class="hero-title">Mozi-Capi</h1>
-                <p class="hero-subtitle">Sua aventura começa aqui!</p>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">A magia do desenho<br>virou jogo!</h1>
+                    <p class="hero-subtitle">Mozi-Capi precisa da sua ajuda para resgatar todas as
+                        <br>frutas, antes que o Sr. Javali coma tudo. Proteja sua
+                        <br>amiga capivara, pois os desafios ficaram cada vez mais
+                        <br>perigosos.<strong>Você irá conseguir?</strong> 
+                    </p>
+                    <div class="hero-button-wrapper">
+                        <a href="#" class="hero-button">JOGAR AGORA!</a>
+                    </div>
+                </div>
             </div>
-            <div class="wave-bottom">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                    <path fill="#ffffff" d="M0,256L48,240C96,224,192,192,288,192C384,192,480,224,576,213.3C672,203,768,149,864,138.7C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                </svg>
+            <div class="hero-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <img src="img/Animation 1.png" alt="Mozi-Capi aventura 1">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/Animation 2.png" alt="Mozi-Capi aventura 2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/Animation 1.png" alt="Mozi-Capi aventura 3">
+                        </div>
+                    </div> 
+                <button class="carousel-btn prev-btn">❮</button>
+                <button class="carousel-btn next-btn">❯</button>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>  
+</section>
         <script>
             window.addEventListener('scroll', function() {
                 const header = document.getElementById('header-wrapper');
@@ -83,5 +113,6 @@
         <h1>dkjfjdkfhjfh</h1>
         <h1>dkjfjdkfhjfh</h1>
         <h1>dkjfjdkfhjfh</h1>
+        <script src="script.js"></script>
     </body>
 </html>
