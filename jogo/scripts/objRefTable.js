@@ -10,6 +10,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.MoveTo,
 		C3.Plugins.Text,
 		C3.Plugins.Mouse,
+		C3.Plugins.Audio,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Acts.SetAnim,
@@ -22,10 +23,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.JavaScriptInEvents.FolhaJogo_Event11_Act4,
 		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Behaviors.Flash.Acts.Flash,
 		C3.JavaScriptInEvents.FolhaJogo_Event12_Act2,
 		C3.Plugins.Mouse.Cnds.OnObjectClicked,
-		C3.Plugins.System.Acts.GoToLayoutByName
+		C3.Plugins.System.Acts.GoToLayoutByName,
+		C3.Plugins.Audio.Acts.SetPaused,
+		C3.Plugins.Audio.Acts.Stop
 	];
 };
 self.C3_JsPropNameTable = [
@@ -72,6 +76,7 @@ self.C3_JsPropNameTable = [
 	{PlanoDeFundoEmBlocos2: 0},
 	{Texto2: 0},
 	{PlanoDeFundoEmBlocos3: 0},
+	{Áudio: 0},
 	{coracao: 0}
 ];
 
@@ -114,5 +119,6 @@ self.InstanceType = {
 	Sprite29: class extends self.ISpriteInstance {},
 	PlanoDeFundoEmBlocos2: class extends self.ITiledBackgroundInstance {},
 	Texto2: class extends self.ITextInstance {},
-	PlanoDeFundoEmBlocos3: class extends self.ITiledBackgroundInstance {}
+	PlanoDeFundoEmBlocos3: class extends self.ITiledBackgroundInstance {},
+	Áudio: class extends self.IInstance {}
 }
