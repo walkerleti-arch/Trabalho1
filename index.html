@@ -17,12 +17,17 @@
                 <a href="index.html" class="logo">   
                     <img src="img/Animation 2.png" alt="logo">
                 </a>
-                <nav class="menu">
+                 <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="menu" id="menu"> 
                     <ul>
                         <li><a href="index.html">INICIO</a></li>
-                        <li><a href="historia.html">HISTÓRIA</a></li>
-                        <li><a href="#">hghg</a></li>
-                        <li><a href="#">hghg</a></li>
+                        <li><a href="historia.html">PERSONAGENS</a></li>
+                        <li><a href="#">PERSONA</a></li>
+                        <li><a href="#">FEEDBACK</a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
@@ -51,13 +56,13 @@
                 <div class="carousel-container">
                     <div class="carousel-slides">
                         <div class="carousel-slide">
-                            <img src="img/Animation 1.png" alt="Mozi-Capi aventura 1">
+                            <img src="img/image (5).png" alt="Mozi-Capi aventura 1">
                         </div>
                         <div class="carousel-slide">
-                            <img src="img/Animation 2.png" alt="Mozi-Capi aventura 2">
+                            <img src="img/3.png" alt="Mozi-Capi aventura 2">
                         </div>
                         <div class="carousel-slide">
-                            <img src="img/Animation 1.png" alt="Mozi-Capi aventura 3">
+                            <img src="img/carrossel.png" alt="Mozi-Capi aventura 3">
                         </div>
                     </div>
                     <button class="carousel-btn prev-btn">❮</button>
@@ -71,17 +76,44 @@
             </div>
         </div>
     </section>
-
-<section class="quadrado-container">
-    <div class="quadrado">
-        <div class="quadrado-content">
-            <h2 class="quadrado-titulo">JOGO AQUI</h2>
+    
+    <section class="quadrado-container" id="jogo-section"> 
+         <h2 class="quadrado-titulo">📖 SOBRE O JOGO</h2>
+        <div class="quadrado">
+           <div class="quadrado-content">
+                <div class="sobre-jogo">
+                    <div class="sobre-imagem">
+                        <img src="img/Animation 1.png" alt="Mozi-Capi">
+                    </div>
+                    <div class="sobre-texto">
+                        <h3>🐹 Mozi-Capi - Aventura na Vila</h3>
+                        <p>
+                        Ajude Mozi-Capi, uma capivara corajosa, a coletar todas as frutas<br> 
+                        antes que o malvado <strong>Sr. Javali</strong> devore todas!
+                    </p>
+                    <p>
+                        🎮 <strong>Como jogar:</strong> Use as setas do teclado para movimentar 
+                        a Mozi-Capi e desviar dos obstáculos. Colete todas as frutas para passar de fase!
+                    </p>     
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script>
+        
+        function abrirJogo() {
+        window.open('jogo/index.html', '_blank');
+        }
 
+        const botoesJogar = document.querySelectorAll('.botao-jogar, .hero-button');
+        botoesJogar.forEach(botao => {
+            botao.addEventListener('click', function(event) {
+                event.preventDefault();
+                abrirJogo();
+            });
+        });
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header-wrapper');
             if(window.scrollY > 50) {
@@ -132,16 +164,67 @@
                 updateCarousel();
             });
         });
+
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const menuLinks = document.querySelectorAll('.menu a');
+
+        menuLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+         });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const body = document.body; 
+
+        const overlay = document.createElement('div');
+        overlay.className = 'menu-overlay';
+        body.appendChild(overlay);
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            menu.classList.remove('open');
+            overlay.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        const menuLinksMobile = document.querySelectorAll('.menu a');
+        menuLinksMobile.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
     </script>
     <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-content">
-            <img src="img/Animation 1.png" alt="Mozi-Capi" class="footer-logo">
-            <p class="footer-copyright">
-                © 2026 Mozi-Capi. Todos os direitos reservados.
-            </p>
+        <div class="footer-container">
+            <div class="footer-content">
+                <img src="img/Animation 1.png" alt="Mozi-Capi" class="footer-logo">
+                <p class="footer-copyright">
+                   © 2026 Mozi-Capi. Todos os direitos reservados.
+                </p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
