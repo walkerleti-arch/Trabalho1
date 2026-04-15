@@ -21,6 +21,7 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: none;
     transition: all 0.3s ease;
+    align-items: center;
 }
 
 .header-scrolled .header {
@@ -33,9 +34,10 @@ body {
     background: rgba(255, 255, 255, 0.901);
     border-radius: 60px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 20px 30px;
+    padding: 12px 30px;
     max-width: 1300px;
     margin: 0 auto;
+    position: relative;
 }
 
 .header-container {
@@ -181,17 +183,20 @@ body {
 }
 
 .personagens-section {
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #fff5f5 0%, #f0f0f0 100%);
-    min-height: calc(100vh - 200px);
+    position: relative;
+    background: linear-gradient(135deg, #ff69b4 0%, #2ecc71 100%);
+    padding: 20px 20px;
+    width: 100%;
+    margin-top: 30px;
+    overflow: hidden;
 }
 
 .personagens-titulo {
     text-align: center;
     font-size: 42px;
     font-weight: 800;
-    color: white;
-    margin-bottom: 50px;
+    color: #fbfbfb;
+    margin-bottom: 20px;
     font-family: Montserrat, sans-serif;
     text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -231,8 +236,13 @@ body {
 }
 
 .personagem-imagem {
+    padding: 0px;
+    text-align: center
+}
+
+.personagem-java {
     background-color: #ff69b4;  
-    background-image: url('img/image1.png');
+    background-image: url('img/java.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
