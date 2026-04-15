@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozi-Capi - Personagens</title>
+    <link rel="icon" href="img/Animation 1.png">
+    <link rel="stylesheet" href="per.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header-wrapper" id="header-wrapper">
+        <header class="header">
+            <div class="header-container">
+                <a href="index.html" class="logo">   
+                    <img src="img/Animation 2.png" alt="logo">
+                </a>
+            <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>                
+                <nav class="menu" id="menu">
+                    <ul>
+                        <li><a href="index.html">INÍCIO</a></li>
+                        <li><a href="personagens.html">PERSONAGENS</a></li>
+                        <li><a href="#">PERSONA</a></li>
+                        <li><a href="#">FEEDBACK</a></li>
+                    </ul>
+                </nav>                
+                <div class="header-buttons">
+                    <a href="#" class="botao-jogar">JOGAR</a>
+                </div>
+            </div>
+        </header>
+    </div> 
+    <section class="personagens-section">
+        <h1 class="personagens-titulo">🎭 CONHEÇA OS PERSONAGENS</h1>        
+        <div class="personagens-container">
+            <div class="personagem-card">
+                <div class="personagem-imagem">
+                    <img src="img/image1.png" alt="Mozi-Capi">
+                </div>
+                <h2 class="personagem-nome">🐹 MOZI-CAPI</h2>
+                <div class="personagem-descricao">
+                    <p>
+                        Mozi-Capi é uma capivara aventureira, alegre e muito corajosa! 
+                        Ela vive em uma vila cheia de amigos e adora explorar a floresta 
+                        em busca de frutas e novas aventuras. Sempre disposta a ajudar 
+                        quem precisa, Mozi-Capi enfrenta qualquer desafio com um sorriso 
+                        no rosto e muita determinação.
+                    </p>
+                </div>
+            </div>
+            <div class="personagem-card">
+                <div class="personagem-imagem">
+                    <img src="img/image0 (1).jpeg" alt="Sr. Javali">
+                </div>
+                <h2 class="personagem-nome">🐗 SR. JAVALI</h2>
+                <div class="personagem-descricao">
+                    <p>
+                        O Sr. Javali é o vilão da história! Ele é teimoso, guloso e 
+                        adora aprontar na vila. Seu maior prazer é comer todas as frutas 
+                        da floresta antes que Mozi-Capi consiga pegá-las. Apesar de ser 
+                        malvado, ele tem um lado engraçado e sempre dá um jeito de atrapalhar 
+                        os planos da nossa capivara favorita.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <img src="img/Animation 1.png" alt="Mozi-Capi" class="footer-logo">
+                <p class="footer-copyright">
+                    © 2026 Mozi-Capi. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>  
+    <script>
+        // FUNÇÃO PARA ABRIR JOGO EM NOVA ABA
+        function abrirJogo() {
+            window.open('jogo/index.html', '_blank');
+        }
+
+        const botoesJogar = document.querySelectorAll('.botao-jogar, .hero-button');
+        botoesJogar.forEach(botao => {
+            botao.addEventListener('click', function(event) {
+                event.preventDefault();
+                abrirJogo();
+            });
+        });
+        
+        // SCROLL HEADER
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header-wrapper');
+            if(window.scrollY > 50) {
+                header.classList.remove('header-transparent');
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+                header.classList.add('header-transparent');
+            }
+        });
+
+        // DESTACAR LINK ATIVO NO MENU
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const menuLinks = document.querySelectorAll('.menu a');
+
+        menuLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+        });
+
+        // MENU HAMBÚRGUER
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const body = document.body;
+
+        // Abrir/fechar menu
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            menu.classList.toggle('open');
+            
+            if (menu.classList.contains('open')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        });
+
+        // Fechar menu ao clicar em um link
+        const menuLinksMobile = document.querySelectorAll('.menu a');
+        menuLinksMobile.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                body.style.overflow = '';
+            });
+        });
+
+        // Fechar menu ao redimensionar a tela
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                body.style.overflow = '';
+            }
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = menu.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (!isClickInsideMenu && !isClickOnToggle && menu.classList.contains('open')) {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                body.style.overflow = '';
+            }
+        });
+    </script>                       
+</body>
+</html>
