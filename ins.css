@@ -227,7 +227,7 @@ body {
     overflow: hidden;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 .split-card:hover {
@@ -239,7 +239,6 @@ body {
     flex: 2;
     background: #ffe4e9;
     display: flex;
-    
     justify-content: center;
     padding: 30px;
 }
@@ -253,7 +252,7 @@ body {
 }
 
 .split-texto {
-    flex: 1;
+    flex: 2;
     padding: 40px 30px;
     background-color: white;
     display: flex;
@@ -278,32 +277,417 @@ body {
     font-family: Montserrat, sans-serif;
 }
 
-@media (max-width: 768px) {
+.seta-container {
+    position: fixed;
+    bottom: 40px;
+    right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease, visibility 0.3s;
+    opacity: 1;
+}
+
+.seta-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.seta {
+    width: 40px;
+    height: 40px;
+    border-right: 6px solid #ff69b4;
+    border-bottom: 6px solid #ff69b4;
+    transform: rotate(45deg);
+    animation: flutuar 2s infinite ease-in-out;
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: rotate(45deg) translate(0, 0);
+    }
+    50% {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 105, 180, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 105, 180, 0.2);
+}
+
+/* Tema escuro - botão */
+body.dark-mode .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode {
+    background-color: #121212;
+}
+
+body.dark-mode .header-wrapper {
+    background-color: transparent;
+}
+
+body.dark-mode .header-transparent .header {
+    background-color: transparent;
+}
+
+body.dark-mode .header-scrolled .header {
+    background-color: rgba(30, 30, 40, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+body.dark-mode .header {
+    background-color: transparent;
+}
+
+body.dark-mode .menu a {
+    color: #bc0e0e;
+}
+
+body.dark-mode .menu a:hover,
+body.dark-mode .menu a.active {
+    color: #ff69b4;
+}
+
+body.dark-mode .menu a.active::after {
+    background: linear-gradient(90deg, #ff69b4, #2ecc71);
+}
+
+body.dark-mode .botao-jogar {
+    background-color: #ff69b4;
+    color: #121212;
+}
+
+body.dark-mode .botao-jogar:hover {
+    background-color: #2ecc71;
+    color: #121212;
+}
+
+body.dark-mode .menu-toggle span {
+    background-color: #ffffff;
+}
+
+body.dark-mode .menu-toggle.active span {
+    background-color: #ffffff;
+}    
+
+body.dark-mode .menu {
+    background: transparent;  
+    box-shadow: none;
+    border: none;
+}
+
+body.dark-mode .menu.open {
+    background: #0a0a0f;  
+    background: linear-gradient(135deg, #0a0a0f 0%, #0f0f15 100%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .menu a {
+    color: #e0e0e0;
+    background-color: transparent;
+}
+
+body.dark-mode .menu a:hover {
+    color: #ff69b4; 
+    background-color: rgba(255, 105, 180, 0.1);
+}
+
+/* Botão tema */
+body.dark-mode .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== GRADIENTES TEMA ESCURO ===== */
+body.dark-mode .hero-background {
+    background: linear-gradient(135deg, #8b2c5e 0%, #1a6b3a 100%);
+}
+
+body.dark-mode .personagens-section {
+    background: linear-gradient(135deg, #8b2c5e 0%, #1a6b3a 100%);
+}
+
+/* ===== CARDS E QUADRADOS ===== */
+body.dark-mode .split-card {
+    background-color: #1e1e2e;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .split-imagem {
+    background: #2a2a3a;
+}
+
+body.dark-mode .split-texto {
+    background-color: #1e1e2e;
+}
+
+body.dark-mode .split-titulo {
+    color: #ff69b4;
+}
+
+body.dark-mode .split-descricao {
+    color: #c0c0c0;
+}
+
+body.dark-mode .quadrado-container {
+    background-color: #121212;
+}
+
+body.dark-mode .quadrado {
+    background-color: #1e1e2e;
+    border-color: #ff69b4;
+}
+
+body.dark-mode .quadrado-titulo {
+    color: #ff69b4;
+}
+
+body.dark-mode .sobre-texto h3 {
+    color: #ff69b4;
+}
+
+body.dark-mode .sobre-texto p {
+    color: #c0c0c0;
+}
+
+/* ===== RODAPÉ ===== */
+body.dark-mode .footer {
+    background: #000000;
+}
+
+body.dark-mode .footer-copyright {
+    color: #666;
+}
+
+/* ===== SETA ===== */
+body.dark-mode .seta {
+    border-right-color: #ff69b4;
+    border-bottom-color: #ff69b4;
+}
+
+/* ===== CARROSSEL ===== */
+body.dark-mode .carousel-btn {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ff69b4;
+}
+
+body.dark-mode .carousel-btn:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+/* ===== TEXTO HERO ===== */
+body.dark-mode .hero-title,
+body.dark-mode .hero-subtitle {
+    color: #ffffff;
+}
+
+body.dark-mode .hero-button {
+    background-color: #ff69b4;
+    color: #121212;
+}
+
+body.dark-mode .hero-button:hover {
+    background-color: #2ecc71;
+    color: #121212;
+}
+
+/* ===== PERSONAGENS ===== */
+body.dark-mode .personagens-titulo {
+    color: #ffffff;
+}
+
+body.dark-mode .personagem-card {
+    background-color: #1e1e2e;
+}
+
+body.dark-mode .personagem-nome {
+    color: #ff69b4;
+    background-color: #1e1e2e;
+}
+
+body.dark-mode .personagem-descricao {
+    color: #c0c0c0;
+    background-color: #1e1e2e;
+}
+
+@media (max-width: 375px) {
+    .header-wrapper {
+        padding: 0px 10px;
+        top: 10px;
+    }
+    
+    .header {
+        padding: 8px 15px;
+        border-radius: 40px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    .botao-jogar {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+    
+    .menu-toggle {
+        width: 25px;
+        height: 18px;
+    }
+    
+    .menu-toggle span {
+        height: 2.5px;
+    }
+    
+    .personagens-titulo {
+        font-size: 24px;
+    }
+    
+    .split-card {
+        flex-direction: column;
+        margin: 10px;
+        border-radius: 20px;
+    }
+    
+    .split-imagem {
+        padding: 20px;
+    }
+    
+    .split-imagem img {
+        max-width: 150px;
+    }
+    
+    .split-texto {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .split-titulo {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .split-descricao {
+        font-size: 14px;
+    }
+    
+    .seta-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .seta {
+        width: 30px;
+        height: 30px;
+        border-right: 4px solid #ff69b4;
+        border-bottom: 4px solid #ff69b4;
+    }
+}
+
+/* Celulares médios (iPhone 12/13/14/15, Galaxy S20/S21 - até 390px) */
+@media (min-width: 376px) and (max-width: 390px) {
+    .header {
+        padding: 10px 20px;
+    }
+    
+    .logo img {
+        height: 32px;
+    }
+    
+    .botao-jogar {
+        padding: 7px 15px;
+        font-size: 11px;
+    }
+    
     .personagens-titulo {
         font-size: 28px;
-        margin-bottom: 30px;
     }
     
-    .personagem-card {
-        min-width: 280px;
-    }
-    
-    .personagem-nome {
+    .split-titulo {
         font-size: 22px;
     }
     
-    .personagem-imagem img {
-        width: 120px;
-        height: 120px;
+    .split-descricao {
+        font-size: 15px;
     }
+    
+    .seta {
+        width: 35px;
+        height: 35px;
+    }
+}
 
+/* Celulares grandes (iPhone Plus/Pro Max, Galaxy Ultra - até 430px) */
+@media (min-width: 391px) and (max-width: 430px) {
+    .header {
+        padding: 12px 22px;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    .botao-jogar {
+        padding: 8px 18px;
+        font-size: 12px;
+    }
+    
+    .personagens-titulo {
+        font-size: 32px;
+    }
+    
+    .split-titulo {
+        font-size: 24px;
+    }
+    
+    .split-descricao {
+        font-size: 16px;
+    }
+}
+
+/* Tablets pequenos e celulares em paisagem (até 768px) */
+@media (max-width: 768px) {
+    /* Menu hambúrguer */
     .menu-toggle {
         display: flex;
     }
     
     .header-container {
         position: relative;
-        flex-wrap: wrap;
     }
     
     .menu {
@@ -349,12 +733,40 @@ body {
         border-radius: 30px;
     }
     
-    /* Botão JOGAR no celular */
-    .botao-jogar {
-        padding: 8px 20px;
-        font-size: 14px;
+    /* Personagens em coluna */
+    .personagens-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
-
+    
+    .personagens-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    /* Split card em coluna */
+    .split-card {
+        flex-direction: column;
+        margin: 15px 10px;
+    }
+    
+    .split-imagem {
+        order: 1;
+    }
+    
+    .split-texto {
+        order: 2;
+        text-align: center;
+    }
+    
+    /* Ajuste do rodapé */
+    .footer {
+        padding: 25px 15px;
+    }
+    
     .footer-logo {
         height: 30px;
     }
@@ -362,42 +774,71 @@ body {
     .footer-copyright {
         font-size: 10px;
     }
+    
+    /* Seta ajustada */
+    .seta-container {
+        bottom: 20px;
+        right: 20px;
+    }
+}
 
+/* Telas muito pequenas (menos de 320px - celulares antigos) */
+@media (max-width: 320px) {
+    .header-wrapper {
+        padding: 0px 8px;
+    }
+    
     .header {
-        padding: 8px 15px;
+        padding: 6px 12px;
     }
     
     .logo img {
-        height: 28px;
+        height: 25px;
     }
     
     .botao-jogar {
-        padding: 6px 12px;
-        font-size: 10px;
+        padding: 4px 10px;
+        font-size: 9px;
     }
     
-    .hero-title {
-        font-size: 24px;
+    .personagens-titulo {
+        font-size: 20px;
     }
     
-    .hero-subtitle {
+    .split-titulo {
+        font-size: 18px;
+    }
+    
+    .split-descricao {
         font-size: 12px;
-    }
-    
-    .carousel-slide img {
-        height: 160px;
-    }
-    
-    .personagem-imagem img {
-        width: 100px;
-        height: 100px;
     }
     
     .split-imagem img {
         max-width: 120px;
     }
     
-    .quadrado-titulo {
-        font-size: 20px;
+    .seta {
+        width: 25px;
+        height: 25px;
+        border-width: 3px;
     }
+}
+
+/* Previne distorção de imagens em todos os dispositivos */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.personagem-imagem img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+}
+
+.split-imagem img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }

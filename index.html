@@ -33,6 +33,9 @@
                 <div class="header-buttons">
                     <a href="#" class="botao-jogar">JOGAR</a>
                 </div>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    🌙
+                </button>
             </div>
         </header>
     </div>   
@@ -88,16 +91,155 @@
                     <div class="sobre-texto">
                         <h3>🐹 Vila da Mozi-Capi</h3>
                         <p>
-                        <strong>Mozi-Capi e seus amigos vivem em uma vila repleta de frutas, e infelizmente Sr. Javali quer roubar todas elas, Mozi-Capi tem a missão de pegar todas elas antes que Sr. Javali coma todas;</strong>
+                        <strong>Mozi-Capi e seus amigos vivem em uma vila repleta de frutas, e infelizmente Sr. Javali quer roubar todas elas, Mozi-Capi precisa pegar todas elas antes que Sr. Javali coma tudo!</strong>
                         </p>     
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    <section class="info-section">
+        <div class="linha-divisoria"></div>
+        <div class="info-container">
+            <h2 class="info-titulo">📖 INFO SOBRE O JOGO</h2>
+            <div class="info-grid">
+                <div class="info-quadro-branco" id="quadro-destaques">
+                    <h3 class="quadro-titulo" id="quadro-titulo"></h3>
+                    <ul class="quadro-lista" id="quadro-lista"></ul>
+                </div>
+                <div class="info-quadro-branco">
+                    <h3 class="quadro-titulo">✉️ Você gostaria de receber novidades do jogo?</h3>
+                    <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Digite seu e-mail aqui">
+                    <button class="newsletter-button">ENVIAR</button>
+                </div>
+                <p class="newsletter-obs">📱 Prometemos não enviar spam!</p>
+            </div>
+        </div>
+    </section>
     <script>
+
+        // DOUGLAS-1
+
+        const devJogo = "Letícia Walker";
+        const classJogo = "Livre para todas as idades";
+        const nomeJogo = "Mozi-Capi";
+        const valorJogo = "Gratuito";
+        const emailJogo = "walker.leticia@grupointegrado.br"
+
+        document.getElementById('quadro-titulo').innerHTML = `✨ ${nomeJogo} ✨`;
+
+        const lista = document.getElementById('quadro-lista');
+        lista.innerHTML = `
+            <li>🎮 <strong>Desenvolvedora:</strong> ${devJogo}</li>
+            <li>💰 <strong>Preço:</strong> ${valorJogo}</li>
+            <li>🔞 <strong>Classificação:</strong> ${classJogo}</li>
+            <li>✉️ <strong>E-mail para contato:</strong> ${emailJogo}</li>       
+    `;
+
+        // FIM DOUGLAS-1
+
+        // DOUGLAS-2
+
+        const anoLancamento = 2026;
+        const anoAtual = new Date().getFullYear();
+        if (anoAtual === anoLancamento) {
+            alert("🎉 GRANDE LANÇAMENTO! 🎉\n\nO jogo Mozi-Capi acaba de ser lançado!\nJogue agora e divirta-se!");
+        }
+
+        // FIM DOUGLAS-2
+
+        // DOUGLAS-3
+
+        const btnEnviar = document.querySelector('.newsletter-button');
+        const emailInput = document.querySelector('.newsletter-input');
+    
+        if (btnEnviar && emailInput) {
+        btnEnviar.addEventListener('click', function() {
+            const email = emailInput.value.trim();
+            
+            if (email === '') {
+                alert('📧 Por favor, digite seu e-mail!');
+                emailInput.style.borderColor = '#ff69b4';
+                emailInput.style.animation = 'shake 0.3s ease';
+                setTimeout(() => {
+                    emailInput.style.animation = '';
+                }, 300);
+            } else if (!email.includes('@') || !email.includes('.')) {
+                alert('⚠️ Por favor, digite um e-mail válido!');
+                emailInput.style.borderColor = '#ff69b4';
+            } else {
+                alert(`✅ Obrigado por se inscrever!\n\n📧 E-mail: ${email}\n\n🎮 Você receberá novidades do jogo Mozi-Capi em breve!`);
+                emailInput.value = '';
+                emailInput.style.borderColor = '#2ecc71';
+                setTimeout(() => {
+                    emailInput.style.borderColor = '#ffe4e9';
+                }, 1000);
+            }
+        });
         
+        emailInput.addEventListener('input', function() {
+            this.style.borderColor = '#ffe4e9';
+        });
+    }
+    
+    // FIM DOUGLAS-3
+
+    // DOUGLAS-4
+
+    let idade = prompt("🔞 Verifique sua idade para acessar as informações do jogo:\n\nQuantos anos você tem?");
+    idade = parseInt(idade);
+    const infoSection = document.querySelector('.info-section');
+
+    if (idade >= 18) {
+        alert("✅ Acesso liberado! Você tem " + idade + " anos e pode ver as informações do jogo.");
+        if (infoSection) {
+            infoSection.style.filter = "blur(0px)";
+        }
+        
+    } else {
+        alert("🔞 Acesso bloqueado! Você tem " + idade + " anos. Conteúdo restrito para maiores de 18 anos.");
+        
+        if (infoSection) {
+            infoSection.style.filter = "blur(8px)";
+            infoSection.style.transition = "filter 0.5s ease";
+        }
+    }
+    
+    // FIM DOUGLAS-4
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(style);
+        
+        const themeToggle = document.getElementById('theme-toggle');
+    
+    // Verificar se há tema salvo no localStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.textContent = '☀️';
+    }
+    
+    // Função para alternar tema
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeToggle.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    });
         function abrirJogo() {
         window.open('jogo/index.html', '_blank');
         }
@@ -171,45 +313,67 @@
          });
 
         const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        const body = document.body; 
+    const menu = document.getElementById('menu');
+    const body = document.body;
 
-        const overlay = document.createElement('div');
-        overlay.className = 'menu-overlay';
-        body.appendChild(overlay);
-
-        menuToggle.addEventListener('click', () => {
+    if (menuToggle && menu) {
+        // Abrir/fechar menu ao clicar no botão
+        menuToggle.addEventListener('click', function(event) {
+            event.stopPropagation();
             menuToggle.classList.toggle('active');
             menu.classList.toggle('open');
-            overlay.classList.toggle('active');
-            body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-        });
-
-        overlay.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            menu.classList.remove('open');
-            overlay.classList.remove('active');
-            body.style.overflow = '';
-        });
-
-        const menuLinksMobile = document.querySelectorAll('.menu a');
-        menuLinksMobile.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                menu.classList.remove('open');
-                overlay.classList.remove('active');
-                body.style.overflow = '';
-            });
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                menuToggle.classList.remove('active');
-                menu.classList.remove('open');
-                overlay.classList.remove('active');
+            
+            // Impede o scroll da página quando o menu está aberto
+            if (menu.classList.contains('open')) {
+                body.style.overflow = 'hidden';
+            } else {
                 body.style.overflow = '';
             }
         });
+
+        // CORREÇÃO: Fecha o menu ao clicar em um link, MAS permite a navegação
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Salva o destino do link
+                const destino = this.getAttribute('href');
+                
+                // Fecha o menu
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                body.style.overflow = '';
+                
+                // PERMITE a navegação para a página
+                // Se o link for para outra página, navega normalmente
+                if (destino && destino !== '#' && destino !== 'javascript:void(0)') {
+                    setTimeout(function() {
+                        window.location.href = destino;
+                    }, 200); // Pequeno delay para a animação do menu
+                }
+            });
+        });
+
+        // Fecha o menu ao redimensionar a tela
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                body.style.overflow = '';
+            }
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = menu.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (!isClickInsideMenu && !isClickOnToggle && menu.classList.contains('open')) {
+                menuToggle.classList.remove('active');
+                menu.classList.remove('open');
+                body.style.overflow = '';
+            }
+        });
+    }
     </script>
     <footer class="footer">
         <div class="footer-container">

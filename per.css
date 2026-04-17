@@ -221,13 +221,13 @@ body {
 .split-card {
     display: flex;
     width: 100%;
-    max-width: 900px;
+    max-width: 9000px;
     background-color: white;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 .split-card:hover {
@@ -238,8 +238,7 @@ body {
 .split-imagem {
     flex: 2;
     background: #ffe4e9;
-    display: flex;
-    
+    display: flex; 
     justify-content: center;
     padding: 30px;
 }
@@ -253,7 +252,7 @@ body {
 }
 
 .split-texto {
-    flex: 1;
+    flex: 2;
     padding: 40px 30px;
     background-color: white;
     display: flex;
@@ -278,32 +277,316 @@ body {
     font-family: Montserrat, sans-serif;
 }
 
-@media (max-width: 768px) {
+.seta-container {
+    position: fixed;
+    bottom: 40px;
+    right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease, visibility 0.3s;
+    opacity: 1;
+}
+
+.seta-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.seta {
+    width: 40px;
+    height: 40px;
+    border-right: 6px solid #ff69b4;
+    border-bottom: 6px solid #ff69b4;
+    transform: rotate(45deg);
+    animation: flutuar 2s infinite ease-in-out;
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: rotate(45deg) translate(0, 0);
+    }
+    50% {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+/* ========== MEDIA QUERY PARA TODOS OS CELULARES ========== */
+
+/* Celulares muito pequenos (até 320px - iPhone SE 1ª gen, Galaxy A03) */
+@media (max-width: 320px) {
+    .header-wrapper {
+        padding: 0px 8px;
+        top: 8px;
+    }
+    
+    .header {
+        padding: 6px 12px;
+        border-radius: 30px;
+    }
+    
+    .logo img {
+        height: 25px;
+    }
+    
+    .botao-jogar {
+        padding: 5px 10px;
+        font-size: 9px;
+    }
+    
+    .menu-toggle {
+        width: 22px;
+        height: 16px;
+    }
+    
+    .menu-toggle span {
+        height: 2px;
+    }
+    
+    .personagens-section {
+        padding: 15px 10px;
+        margin-top: 15px;
+    }
+    
+    .personagens-titulo {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .split-card {
+        margin: 10px auto;
+        border-radius: 20px;
+    }
+    
+    .split-imagem {
+        padding: 15px;
+    }
+    
+    .split-imagem img {
+        max-width: 80px;
+    }
+    
+    .split-texto {
+        padding: 15px;
+    }
+    
+    .split-titulo {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .split-descricao {
+        font-size: 11px;
+    }
+    
+    .footer {
+        padding: 20px 10px;
+    }
+    
+    .footer-logo {
+        height: 25px;
+    }
+    
+    .footer-copyright {
+        font-size: 8px;
+    }
+    
+    .seta-container {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .seta {
+        width: 25px;
+        height: 25px;
+        border-right: 4px solid #ff69b4;
+        border-bottom: 4px solid #ff69b4;
+    }
+}
+
+/* Celulares pequenos (321px a 375px - iPhone 6/7/8, Galaxy S8) */
+@media (min-width: 321px) and (max-width: 375px) {
+    .header-wrapper {
+        padding: 0px 10px;
+        top: 10px;
+    }
+    
+    .header {
+        padding: 8px 15px;
+        border-radius: 35px;
+    }
+    
+    .logo img {
+        height: 28px;
+    }
+    
+    .botao-jogar {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+    
+    .menu-toggle {
+        width: 25px;
+        height: 18px;
+    }
+    
+    .menu-toggle span {
+        height: 2.5px;
+    }
+    
+    .personagens-titulo {
+        font-size: 24px;
+    }
+    
+    .split-imagem img {
+        max-width: 100px;
+    }
+    
+    .split-titulo {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .split-descricao {
+        font-size: 12px;
+    }
+    
+    .footer-logo {
+        height: 28px;
+    }
+    
+    .footer-copyright {
+        font-size: 9px;
+    }
+    
+    .seta {
+        width: 30px;
+        height: 30px;
+        border-right: 5px solid #ff69b4;
+        border-bottom: 5px solid #ff69b4;
+    }
+}
+
+/* Celulares médios (376px a 390px - iPhone 12/13/14, Pixel 6) */
+@media (min-width: 376px) and (max-width: 390px) {
+    .header {
+        padding: 10px 18px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    .botao-jogar {
+        padding: 7px 15px;
+        font-size: 11px;
+    }
+    
     .personagens-titulo {
         font-size: 28px;
-        margin-bottom: 30px;
     }
     
-    .personagem-card {
-        min-width: 280px;
+    .split-imagem img {
+        max-width: 120px;
     }
     
-    .personagem-nome {
-        font-size: 22px;
+    .split-titulo {
+        font-size: 20px;
+        margin-bottom: 18px;
     }
     
-    .personagem-imagem img {
-        width: 120px;
-        height: 120px;
+    .split-descricao {
+        font-size: 13px;
     }
+    
+    .footer-logo {
+        height: 30px;
+    }
+    
+    .seta {
+        width: 32px;
+        height: 32px;
+    }
+}
 
+/* Celulares grandes (391px a 430px - iPhone Plus/Pro Max, Galaxy Ultra) */
+@media (min-width: 391px) and (max-width: 430px) {
+    .header {
+        padding: 12px 22px;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    .botao-jogar {
+        padding: 8px 18px;
+        font-size: 12px;
+    }
+    
+    .personagens-titulo {
+        font-size: 32px;
+    }
+    
+    .split-imagem img {
+        max-width: 140px;
+    }
+    
+    .split-titulo {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .split-descricao {
+        font-size: 14px;
+    }
+    
+    .footer-logo {
+        height: 32px;
+    }
+}
+
+/* Tablets pequenos (431px a 768px) */
+@media (min-width: 431px) and (max-width: 768px) {
+    .header {
+        padding: 12px 25px;
+    }
+    
+    .logo img {
+        height: 38px;
+    }
+    
+    .botao-jogar {
+        padding: 9px 20px;
+        font-size: 13px;
+    }
+    
+    .personagens-titulo {
+        font-size: 36px;
+    }
+    
+    .split-imagem img {
+        max-width: 160px;
+    }
+    
+    .split-titulo {
+        font-size: 24px;
+    }
+    
+    .split-descricao {
+        font-size: 15px;
+    }
+}
+
+/* MENU HAMBÚRGUER - Ativa em todos os celulares (até 768px) */
+@media (max-width: 768px) {
     .menu-toggle {
         display: flex;
     }
     
     .header-container {
         position: relative;
-        flex-wrap: wrap;
     }
     
     .menu {
@@ -341,6 +624,7 @@ body {
         font-size: 16px;
         padding: 10px;
         display: block;
+        white-space: normal;
     }
     
     .menu a:hover {
@@ -349,55 +633,337 @@ body {
         border-radius: 30px;
     }
     
-    /* Botão JOGAR no celular */
-    .botao-jogar {
-        padding: 8px 20px;
-        font-size: 14px;
+    /* Cards em coluna */
+    .personagens-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
+    
+    .personagens-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    /* Split card em coluna */
+    .split-card {
+        flex-direction: column;
+        max-width: 95%;
+        margin: 15px auto;
+    }
+    
+    .split-imagem {
+        order: 1;
+    }
+    
+    .split-texto {
+        order: 2;
+        text-align: center;
+    }
+    
+    /* Rodapé */
+    .footer {
+        padding: 30px 15px;
+    }
+    
+    /* Seta */
+    .seta-container {
+        bottom: 20px;
+        right: 20px;
+    }
+}
 
-    .footer-logo {
-        height: 30px;
+/* CORREÇÃO DO SPLIT-CARD (max-width estava 9000px, corrigindo) */
+@media (min-width: 769px) {
+    .split-card {
+        max-width: 900px;
     }
-    
-    .footer-copyright {
-        font-size: 10px;
-    }
+}
 
-    .header {
-        padding: 8px 15px;
+/* Previne distorção de imagens em todos os dispositivos */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.split-imagem img {
+    object-fit: contain;
+}
+
+/* Garante que o gradiente ocupe toda largura */
+.personagens-section {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 105, 180, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 105, 180, 0.2);
+}
+
+/* Tema escuro - botão */
+body.dark-mode .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode {
+    background-color: #121212;
+}
+
+body.dark-mode .header-wrapper {
+    background-color: transparent;
+}
+
+body.dark-mode .header-transparent .header {
+    background-color: transparent;
+}
+
+body.dark-mode .header-scrolled .header {
+    background-color: rgba(30, 30, 40, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+body.dark-mode .header {
+    background-color: transparent;
+}
+
+body.dark-mode .menu a {
+    color: #bc0e0e;
+}
+
+body.dark-mode .menu a:hover,
+body.dark-mode .menu a.active {
+    color: #ff69b4;
+}
+
+body.dark-mode .menu a.active::after {
+    background: linear-gradient(90deg, #ff69b4, #2ecc71);
+}
+
+body.dark-mode .botao-jogar {
+    background-color: #ff69b4;
+    color: #121212;
+}
+
+body.dark-mode .botao-jogar:hover {
+    background-color: #2ecc71;
+    color: #121212;
+}
+
+body.dark-mode .menu-toggle span {
+    background-color: #ffffff;
+}
+
+body.dark-mode .menu-toggle.active span {
+    background-color: #ffffff;
+}    
+
+body.dark-mode .menu {
+    background: transparent;  
+    box-shadow: none;
+    border: none;
+}
+
+body.dark-mode .menu.open {
+    background: #0a0a0f;  
+    background: linear-gradient(135deg, #0a0a0f 0%, #0f0f15 100%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .menu a {
+    color: #e0e0e0;
+    background-color: transparent;
+}
+
+body.dark-mode .menu a:hover {
+    color: #ff69b4; 
+    background-color: rgba(255, 105, 180, 0.1);
+}
+
+/* Botão tema */
+body.dark-mode .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== GRADIENTES TEMA ESCURO ===== */
+body.dark-mode .hero-background {
+    background: linear-gradient(135deg, #8b2c5e 0%, #1a6b3a 100%);
+}
+
+body.dark-mode .personagens-section {
+    background: linear-gradient(135deg, #8b2c5e 0%, #1a6b3a 100%);
+}
+
+/* ===== CARDS E QUADRADOS ===== */
+body.dark-mode .split-card {
+    background-color: #1e1e2e;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .split-imagem {
+    background: #2a2a3a;
+}
+
+body.dark-mode .split-texto {
+    background-color: #1e1e2e;
+}
+
+body.dark-mode .split-titulo {
+    color: #ff69b4;
+}
+
+body.dark-mode .split-descricao {
+    color: #c0c0c0;
+}
+
+body.dark-mode .quadrado-container {
+    background-color: #121212;
+}
+
+body.dark-mode .quadrado {
+    background-color: #1e1e2e;
+    border-color: #ff69b4;
+}
+
+body.dark-mode .quadrado-titulo {
+    color: #ff69b4;
+}
+
+body.dark-mode .sobre-texto h3 {
+    color: #ff69b4;
+}
+
+body.dark-mode .sobre-texto p {
+    color: #c0c0c0;
+}
+
+/* ===== RODAPÉ ===== */
+body.dark-mode .footer {
+    background: #000000;
+}
+
+body.dark-mode .footer-copyright {
+    color: #666;
+}
+
+/* ===== SETA ===== */
+body.dark-mode .seta {
+    border-right-color: #ff69b4;
+    border-bottom-color: #ff69b4;
+}
+
+/* ===== CARROSSEL ===== */
+body.dark-mode .carousel-btn {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ff69b4;
+}
+
+body.dark-mode .carousel-btn:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+/* ===== TEXTO HERO ===== */
+body.dark-mode .hero-title,
+body.dark-mode .hero-subtitle {
+    color: #ffffff;
+}
+
+body.dark-mode .hero-button {
+    background-color: #ff69b4;
+    color: #121212;
+}
+
+body.dark-mode .hero-button:hover {
+    background-color: #2ecc71;
+    color: #121212;
+}
+
+/* ===== PERSONAGENS ===== */
+body.dark-mode .personagens-titulo {
+    color: #ffffff;
+}
+
+body.dark-mode .personagem-card {
+    background-color: #1e1e2e;
+}
+
+body.dark-mode .personagem-nome {
+    color: #ff69b4;
+    background-color: #1e1e2e;
+}
+
+body.dark-mode .personagem-descricao {
+    color: #c0c0c0;
+    background-color: #1e1e2e;
+}
+
+/* Correção para telas em modo paisagem (horizontal) */
+@media (max-width: 900px) and (orientation: landscape) {
+    .personagens-section {
+        padding: 20px;
     }
     
-    .logo img {
-        height: 28px;
+    .split-card {
+        flex-direction: row;
+        max-width: 95%;
     }
     
-    .botao-jogar {
-        padding: 6px 12px;
-        font-size: 10px;
+    .split-imagem {
+        flex: 1;
+        padding: 20px;
     }
     
-    .hero-title {
-        font-size: 24px;
-    }
-    
-    .hero-subtitle {
-        font-size: 12px;
-    }
-    
-    .carousel-slide img {
-        height: 160px;
-    }
-    
-    .personagem-imagem img {
-        width: 100px;
-        height: 100px;
+    .split-texto {
+        flex: 1;
+        padding: 20px;
     }
     
     .split-imagem img {
-        max-width: 120px;
+        max-width: 100px;
     }
     
-    .quadrado-titulo {
-        font-size: 20px;
+    .split-titulo {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .split-descricao {
+        font-size: 12px;
+    }
+    
+    .menu {
+        max-height: 250px;
     }
 }

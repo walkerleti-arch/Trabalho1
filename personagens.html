@@ -33,6 +33,9 @@
                 <div class="header-buttons">
                     <a href="#" class="botao-jogar">JOGAR</a>
                 </div>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    🌙
+                </button>
             </div>
         </header>
     </div> 
@@ -41,7 +44,7 @@
         <div class="personagens-container">
             <div class="split-card">
                 <div class="split-imagem">
-                    <img src="img/capi.png" alt="Mozi-Capi">
+                    <img src="img/capii.png" alt="Mozi-Capi">
                 </div>
                 <div class="split-texto">
                     <h2 class="split-titulo">🐹 Mozi-Capi</h2>
@@ -54,7 +57,7 @@
             </div>
             <div class="split-card">
                 <div class="split-imagem">
-                    <img src="img/java.jpeg" alt="Mozi-Capi">
+                    <img src="img/javaaa.png" alt="Mozi-Capi">
                 </div>
                 <div class="split-texto">
                     <h2 class="split-titulo">🐗 SR. JAVALI</h2>
@@ -69,7 +72,10 @@
             </div>
         </div>
     </section>
-    <footer class="footer">
+    <div class="seta-container">
+        <div class="seta"></div> 
+    </div>
+    <footer class="footer" id="meu-rodape">
         <div class="footer-container">
             <div class="footer-content">
                 <img src="img/Animation 1.png" alt="Mozi-Capi" class="footer-logo">
@@ -80,7 +86,42 @@
         </div>
     </footer>  
     <script>
-        // FUNÇÃO PARA ABRIR JOGO EM NOVA ABA
+         const themeToggle = document.getElementById('theme-toggle');
+    
+    // Verificar se há tema salvo no localStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.textContent = '☀️';
+    }
+    
+    // Função para alternar tema
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeToggle.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+        const seta = document.getElementById('seta');
+        const rodape = document.getElementById('meu-rodape');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    seta.classList.add('seta-hidden');
+                } else {
+                    seta.classList.remove('seta-hidden');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        observer.observe(rodape);
         function abrirJogo() {
             window.open('jogo/index.html', '_blank');
         }
@@ -117,15 +158,16 @@
         });
 
         // MENU HAMBÚRGUER
-        const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        const body = document.body;
+         const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const body = document.body;
 
-        // Abrir/fechar menu
-        menuToggle.addEventListener('click', () => {
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', function() {
             menuToggle.classList.toggle('active');
             menu.classList.toggle('open');
             
+            // Impede o scroll da página quando o menu está aberto
             if (menu.classList.contains('open')) {
                 body.style.overflow = 'hidden';
             } else {
@@ -133,18 +175,18 @@
             }
         });
 
-        // Fechar menu ao clicar em um link
-        const menuLinksMobile = document.querySelectorAll('.menu a');
-        menuLinksMobile.forEach(link => {
-            link.addEventListener('click', () => {
+        // Fecha o menu ao clicar em um link
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
                 menu.classList.remove('open');
                 body.style.overflow = '';
             });
         });
 
-        // Fechar menu ao redimensionar a tela
-        window.addEventListener('resize', () => {
+        // Fecha o menu ao redimensionar a tela para desktop
+        window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 menuToggle.classList.remove('active');
                 menu.classList.remove('open');
@@ -152,8 +194,8 @@
             }
         });
 
-        // Fechar menu ao clicar fora
-        document.addEventListener('click', (event) => {
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(event) {
             const isClickInsideMenu = menu.contains(event.target);
             const isClickOnToggle = menuToggle.contains(event.target);
             
@@ -163,6 +205,7 @@
                 body.style.overflow = '';
             }
         });
+    }
     </script> 
     <div class="menu-overlay"></div>                      
 </body>
